@@ -28,6 +28,7 @@ from autoprotocol.protocol import Protocol
 
 from apm_logging import MyLogger
 from input_arguments import get_input_args
+from plates import Plate, read_plate_file
 
 
 @MyLogger
@@ -37,8 +38,14 @@ def main():
     PARAMETERS: None
     RETURNS:    None
     """
+    # parse in the input arguments
+    in_args = get_input_args()
 
-    # instantiate the Protocol object
+    # get the list of plates (assay and reagent) to be used
+    plate_dict = read_plate_file(in_args.barcode_file)
+    print(plate_dict)
+
+    # instantiate the AutoProtocol object
     p = Protocol()
 
     # TODO: breakout the individual actions into separate functions

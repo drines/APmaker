@@ -6,7 +6,7 @@
 # REVISED DATE:     2019.05.15
 # PURPOSE:  Built-in logging capabilities
 #
-# NOTES:    To help debug issues relating to exceptions or 
+# NOTES:    To help debug issues relating to exceptions or
 #           JSON file development, APmaker utilizes a set of
 #           log files. These are stored in the log folder.
 #
@@ -35,7 +35,7 @@ class MyLogger:
         self.logger.setLevel(logging.INFO)
 
         # create the file logger handle
-        self.fh = logging.FileHandler("./logs/json_info_build.log")
+        self.fh = logging.FileHandler("./logs/apm_info.log")
         fmt = '%(asctime)s - %(levelname)s - %(name)s %(message)s: '
         fmt += self.function.__name__
         formatter = logging.Formatter(fmt)
