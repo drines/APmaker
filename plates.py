@@ -12,13 +12,15 @@
 
 # Imports python modules
 import pandas as pd
+from autoprotocol.protocol import Protocol
 from apm_logging import MyLogger
 
 
-class Plate:
+class Plate(Protocol):
     """
     Object class for working with assay and reagent
-    plates in the APmaker program.
+    plates in the APmaker program. This object inherits
+    from the Protocol object defined in AutoProtocol.
     """
     def __init__(self, barcode, well_count, part_num):
         """
@@ -28,9 +30,26 @@ class Plate:
         self.barcode = barcode
         self.well_count = well_count
         self.part_num = part_num
+        # define the REFs elements
+        self.p = Protocol()
+        self.id = self.p.ref(self.barcode,
+                             id=self.barcode,
+                             cont_type="96-pcr",
+                             storage=None,
+                             discard=True)
+        self.plate_protocol()
+
+    def plate_protocol(self):
+        """
+        Method to define the protocol that will be applied
+        to the plate.
+        """
+        # weigh the mass of the plate before dispensing
+        self.p.measure_mass(self.id, self.barcode + "_mass_before")
+        self.p.dispense_full_plate(self.id, "water", "100:microliter")
+        self.p.measure_mass(self.id, self.barcode + "_mass_after")
 
 
-@MyLogger
 def read_plate_file(file_name):
     """
     Reads through the csv file designated in the location

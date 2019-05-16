@@ -4,7 +4,7 @@
 #
 # PROGRAMMER:       Daniel Rines
 # DATE CREATED:     2019.05.14
-# REVISED DATE:     2019.05.15
+# REVISED DATE:     2019.05.16
 # PURPOSE:  Code development & testing of the Autoprotocol library in Python.
 #
 # NOTES:    General notes and rules for working with Autoprotocol...
@@ -23,12 +23,12 @@
 ##
 
 # Imports python modules
-import json
 from autoprotocol.protocol import Protocol
 
 from apm_logging import MyLogger
 from input_arguments import get_input_args
 from plates import Plate, read_plate_file
+from generate_json import dump_json
 
 
 @MyLogger
@@ -43,39 +43,21 @@ def main():
 
     # get the list of plates (assay and reagent) to be used
     plate_dict = read_plate_file(in_args.barcode_file)
-    print(plate_dict)
-
-    # instantiate the AutoProtocol object
-    p = Protocol()
 
     # TODO: breakout the individual actions into separate functions
+    #for key in plate_dict.keys():
+     #   print(plate_dict[key])
 
-    # define the REFS section of the json output and specify
-    # the current plate to use - can come from a database
-    barcode = "A00001"
-    current_plate = p.ref("assay_plate_1",
-                          id=barcode,
-                          cont_type="96-pcr",
-                          storage=None,
-                          discard=True)
+    #     # print("working on barcode: {}".format(plate_dict[key].barcode))
+    #     # build_ap_obj(plate_dict[key], ap)
+    #     plate_obj = Plate(key, 96, )
+    #     plate_obj.plate_protocol()
+    #     print(key.ap)
 
-    # weigh the mass of the plate before dispensing
-    p.measure_mass(current_plate, barcode + "_mass_before")
-
-    # fill the plate with water
-    p.dispense_full_plate(current_plate, "water", "100:microliter")
-
-    # spin the plate
-    p.spin(current_plate, "1000:g", "10:minute", flow_direction="outward")
-
-    # re-weigh the mass of the plate after dispensing
-    p.measure_mass(current_plate, barcode + "_mass_after")
-
-    # seal the plate
-    p.seal(current_plate, mode="thermal", temperature="160:celsius")
-
-    # serialize the protocol as Autoprotocol JSON
-    print(json.dumps(p.as_dict(), indent=2))
+    # #print(ap)
+    # # serialize the protocol and output to a Autoprotocol
+    # # file for loading into the Tx software.
+    dump_json(plate_dict)
 
 
 # Call to main function to run the program

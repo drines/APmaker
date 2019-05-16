@@ -1,0 +1,76 @@
+{
+  "instructions": [
+    {
+      "op": "measure_mass",
+      "object": "A0000005",
+      "dataref": "A0000005_mass_before"
+    },
+    {
+      "op": "dispense",
+      "object": "A0000005",
+      "columns": [
+        {
+          "column": 0,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 1,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 2,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 3,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 4,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 5,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 6,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 7,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 8,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 9,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 10,
+          "volume": "100:microliter"
+        },
+        {
+          "column": 11,
+          "volume": "100:microliter"
+        }
+      ],
+      "reagent": "water",
+      "step_size": "5:microliter"
+    },
+    {
+      "op": "measure_mass",
+      "object": "A0000005",
+      "dataref": "A0000005_mass_after"
+    }
+  ],
+  "refs": {
+    "A0000005": {
+      "id": "A0000005",
+      "discard": true
+    }
+  }
+}
