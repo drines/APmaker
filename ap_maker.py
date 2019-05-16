@@ -44,21 +44,9 @@ def main():
     # get the list of plates (assay and reagent) to be used
     plate_dict = read_plate_file(in_args.barcode_file)
 
-    # TODO: breakout the individual actions into separate functions
-    #for key in plate_dict.keys():
-     #   print(plate_dict[key])
-
-    #     # print("working on barcode: {}".format(plate_dict[key].barcode))
-    #     # build_ap_obj(plate_dict[key], ap)
-    #     plate_obj = Plate(key, 96, )
-    #     plate_obj.plate_protocol()
-    #     print(key.ap)
-
-    # #print(ap)
-    # # serialize the protocol and output to a Autoprotocol
-    # # file for loading into the Tx software.
+    # serialize the protocol and output to a Autoprotocol
+    # file for loading into the Tx software.
     dump_json(plate_dict)
-
 
 # Call to main function to run the program
 if __name__ == "__main__":
