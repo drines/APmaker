@@ -4,7 +4,7 @@
 #
 # PROGRAMMER:       Daniel Rines
 # DATE CREATED:     2019.05.14
-# REVISED DATE:     2019.05.16
+# REVISED DATE:     2019.05.21
 # PURPOSE:  Code development & testing of the Autoprotocol library in Python.
 #
 # NOTES:    General notes and rules for working with Autoprotocol...
